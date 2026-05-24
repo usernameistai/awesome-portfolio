@@ -1,0 +1,42 @@
+<svg 
+  viewBox="0 0 24 24" 
+  width="1em" 
+  height="1em" 
+  className="w-full h-full"
+  fill="none" 
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    {/* Cinematic color sync with your portfolio theme */}
+    <linearGradient id="dev-glow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#863BFF" />
+      <stop offset="100%" stopColor="#6366F1" />
+    </linearGradient>
+  </defs>
+  
+  {/* Left Code Bracket */}
+  <path 
+    d="M8 6L2 12L8 18" 
+    stroke="url(#dev-glow-grad)" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+  />
+  
+  {/* Right Code Bracket */}
+  <path 
+    d="M16 6L22 12L16 18" 
+    stroke="url(#dev-glow-grad)" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+  />
+  
+  {/* Terminal Command Line Cursor Block */}
+  <path 
+    d="M11 15H14" 
+    stroke="url(#dev-glow-grad)" 
+    strokeWidth="2.5" 
+    strokeLinecap="round" 
+  />
+</svg>

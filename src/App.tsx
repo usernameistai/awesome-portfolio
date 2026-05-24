@@ -1,0 +1,552 @@
+import { useState, lazy, Suspense } from 'react';
+import ProfilePic from './assets/profilepic3.webp';
+import Projects from './components/Projects';
+import { type ProjectData } from './components/Projects';
+
+import MagicRings from './components/MagicRings';
+import ClickSpark from './components/ClickSpark';
+const ElectricBorder = lazy(() => import('./components/ElectricBorder'));
+const Antigravity = lazy(() => import('./components/Antigravity'));
+const ShinyText = lazy(() => import('./components/ShinyText'));
+const LogoLoop = lazy(() => import('./components/LogoLoop'));
+import MetallicPaint from "./components/MetallicPaint";
+
+import { SiReact, SiVite, SiTypescript, SiTailwindcss, SiNodedotjs, 
+  SiExpress, SiMongodb, SiSvelte, SiPostman, SiHeroku, SiHtml5, SiTauri,
+  SiNetlify, SiRender, SiGithub } from 'react-icons/si';
+  import { SlSocialLinkedin } from "react-icons/sl";
+import { VscVscodeInsiders } from "react-icons/vsc";
+import { FaCss3, FaRust  } from "react-icons/fa6";
+import { HiOutlineMail } from 'react-icons/hi';
+import DevIcon from './assets/dev.svg';
+
+const App = () => {
+  const [activeSelection, setActiveSelection] = useState('hero');
+
+  const navLinks= [
+    { label: 'System_Init', target: '#hero'},
+    { label: 'Project_db', target: '#projects'},
+    { label: 'About_Log', target: '#about'},
+  ];
+
+  const myProjects: ProjectData[] = [
+    { 
+      name: 'PeakyBlogger', 
+      icon: 'fa-solid fa-tree text-[#6366F1]', 
+      href: 'https://peakyblogger-d362176b187f.herokuapp.com/', 
+      desc: (
+        <>
+          <p>PeakyBlogger is a Full Stack blogsite for my Father, created a <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">MongoDb Atlas, EJS, Passport, Vanilla JS, Express.js & Node.js</strong> CRUD application. Hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Heroku.</strong> This is so he can document his walks and eateries of the Peak District to promote healthy living and eating as well as wellbeing.</p>
+        </>
+      )
+    },
+    { 
+      name: 'HelpMe-Car', 
+      icon: 'fa-solid fa-hands text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://helpme-car.herokuapp.com/', 
+      desc: (
+        <>
+          <p>HelpMe-Car is a Full Stack web app to enable helping other people's cars, created a <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">MongoDb Atlas, Express.js, React.js & Node.js</strong> CRUD application. Hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Heroku.</strong>Here you can enter helpful suggestions from pre-written examples to a database to help individuals maintain their cars safely.</p>
+        </>
+      )
+    },
+    { 
+      name: 'Weather Or Not', 
+      icon: 'fa-solid fa-cloud-sun-rain text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://weather-orr-not.netlify.app/', 
+      desc: (
+        <>
+          <p>Weather Or Not is a Static web app to help you keep track of your local weather using OpenWeatherMap API. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React, Typescript & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong> You can keep track of weather from several areas, cities or regions.</p>
+        </>
+      )
+    },
+    { 
+      name: 'e-Commerce API Basic', 
+      icon: 'fa-solid fa-shop text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://e-commerce-api-basic.onrender.com/', 
+      desc: (
+        <>
+          <p>e-Commerce-API-Basic is a Static web app demonstrating an e-commerce site for my portfolio. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> This is more an app to search for items, using a dummyjson API product data and also dummy data for the users / top sellers. With night / day settings.</p>
+        </>
+      )
+    },
+    { 
+      name: 'D3.js Choropleth Map USA Edu.', 
+      icon: 'fa-solid fa-earth-americas text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://fcc-choropleth-map.onrender.com/', 
+      desc: (
+        <>
+          <p>Choropleth Map illustrating the % of adults with a bachelors degree over the age of 25 between 2010 - 2014. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js, HTML5 & CSS3</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> There is a tooltip for further information about the specific areas / regions. </p>
+        </>
+      )
+    },
+    { 
+      name: 'Todo-my-Todo', 
+      icon: 'fa-solid fa-list-ul text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://todo-my-todo.netlify.app/', 
+      desc:  (
+        <>
+          <p>Todo-my-Todo is a nicely designed and very simple todo list, using localstorage. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong> This is a basic todo app with only the funcitonality to edit or delete, looks retro however.</p>
+        </>
+      )
+    },
+    { 
+      name: 'Data Dashboard', 
+      icon: 'fa-solid fa-server text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://dashboard-1-ftx2.onrender.com/', 
+      desc: (
+        <>
+          <p>Data Dashboard is a Static web app to illustrate the principles of a data dashboard. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React, Chart.js, D3.js, Lucide-React & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> It is supposed to show how a genuine real-time data dashboard would look like. Would like to build one looking at Crypto.</p>
+        </>
+        )
+    },
+    { 
+      name: 'D3.js Heat Map', 
+      icon: 'fa-solid fa-fire-flame-curved text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://fcc-heat-map.onrender.com/', 
+      desc:  (
+        <>
+          <p>Heat Map illustrating the Monthly Global Land-Surface Temperature between 1753 - 2015. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js & HTML5/CSS3/JS</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> There is a tooltip to give you more information going over the area, namely the variance to the global average plus more!</p>
+        </>
+        )
+    },
+    { 
+      name: 'StockMarket-WishList', 
+      icon: 'fa-solid fa-money-bill-trend-up text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://stockmarket-wishlist.onrender.com/', 
+      desc: (
+        <>
+          <p>StockMarket-WishList is a Static web app to help you keep track of your favourite stock using NASDAQ100. Created using <strong className="text-[#6366F1]">Vite.js & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1]">Render.</strong> The symbol used will bring up the stock of choice into the graph area of the app where you can select the relevant data you are after.</p>
+        </>
+        )
+    }
+  ];
+
+  const techLogos = [
+    { node: <SiVite className="text-[#863BFF]" />, title: "Vite", href: "https://vitejs.dev" },
+    { node: <SiReact className="text-[#61DBFB]" />, title: "React", href: "https://react.dev" },
+    { node: <SiTypescript className="text-[#3178C6]" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+    { node: <SiTailwindcss className="text-[#06B6D4]" />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+    { node: <VscVscodeInsiders className="text-[#007ACC]" />, title: "VS-Code", href: "https://www.heroku.com" },
+    { node: <SiNodedotjs className="text-[#5FA04E]" />, title: "Node.js", href: "https://nodejs.org" },
+    { node: <SiMongodb className="text-[#00ED64]" />, title: "MongoDB", href: "https://www.mongodb.com" },
+    { node: <SiExpress className="text-[#303030]" />, title: "Express", href: "https://expressjs.com" },
+    { node: <SiPostman className="text-[#FF6C37]" />, title: "Postman", href: "https://www.postman.com" },
+    { node: <SiHtml5 className="text-[#E34C26]" />, title: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5" },
+    { node: <SiHeroku className="text-[#430098]" />, title: "Heroku", href: "https://www.heroku.com" },
+    { node: <SiNetlify className="text-[#00C7B7]" />, title: "Netlify", href: "https://www.netlify.com" },
+    { node: <SiRender className="text-[#46E3B7]" />, title: "Render", href: "https://render.com" },
+    { node: <FaCss3 className="text-[#1572B6]" />, title: "CSS3", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+    { node: <SiSvelte className="text-[#FF3E00]" />, title: "Svelte", href: "https://svelte.dev" },
+    { node: <FaRust className="text-[#CE412B]" />, title: "Rust", href: "https://www.rust-lang.org" },
+    { node: <SiTauri className="text-[#24C8DB]" />, title: "Tauri", href: "https://tauri.app" },
+  ];
+
+  const benefits = [
+        {name: 'a self taught developer', desc: 'I studied an MSc in I.T. course but mostly I taught myself to code using free online resources and became entwined with the creativity and problem solving that is involved in developing and engineering innovative new online experiences. Starting off with JavaScript, HTML & CSS and evolving my knowledge base to include JavaScript frameworks, backend programming, design, cloud services and much much more.'},
+        {name: 'a product design and UX fanatic', desc: 'Carefully crafting and designing amazing user experiences allows me to express and experiment with every morsel of creativity I have. I love the challenge of learning new design concepts and enabling users with amazing online experiences. Did you click the link?'},
+        {name: 'an excellent communicator', desc: 'Communication is key and it is a paramount value of mine. I believe in transparency and constructive communication above all else, it helps with physically and mentally unwell people. This helps me develop deep relationships and ensures my effectiveness and productivity in any work space with any team. This could be seen from my previous work in hospitals during the lock-down period, people in varying states of happiness & wellness and then there were the patients...'},
+    ]
+ 
+  return (
+    <>
+      <ClickSpark
+        sparkColor="#22D3EE"
+        sparkSize={10}
+        sparkRadius={15}
+        sparkCount={8}
+        duration={400}
+      >
+        <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-cyan-500 selection:text-white">
+          
+          {/* SEMI NAVBAR (QUICK LINKS) */}
+          <nav className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-900 px-4 md:px-6 py-3 md:py-4">
+            <div className="max-w-6xl mx-auto flex items-center justify-between">
+              <div className="font-mono font-semibold tracking-widest text-[11px] md:text-base text-cyan-400 animate-pulse">
+                DB_PORTFOLIO //
+              </div>
+              <div className="flex gap-2 md:gap-4">
+                {navLinks.map((link) => (
+                  <a key={link.label} href={link.target}
+                      onClick={() => setActiveSelection(link.target.replace('#', ''))}
+                        className={`font-mono text-xs md:text-sm px-1.5 md:px-3 py-1.5 rounded transition-all duration-200 border 
+                          ${ activeSelection === link.target.replace('#', '')
+                            ? 'bg-cyan-950/40 text-cyan-400 border-cyan-800/60 shadow-[0_0_15px_rgba(34,211,238,0.15)]'
+                            : 'text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/50'
+                          }`}
+                    
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </nav>
+
+          <main className="flex flex-col flex-1 pb-4 mx-auto space-y-20 max-w-7xl">
+            <section id="hero" className="relative w-full h-[60vh]">
+              {/* The Ring Component - Absolute inside the 96x96 box */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <MagicRings
+                  color="#A855F7"
+                  colorTwo="#6366F1"
+                  ringCount={6}
+                  speed={1}
+                  attenuation={10}
+                  lineThickness={2}
+                  baseRadius={0.35}
+                  radiusStep={0.1}
+                  scaleRate={0.1}
+                  opacity={1}
+                  blur={0}
+                  noiseAmount={0.1}
+                  rotation={0}
+                  ringGap={1.5}
+                  fadeIn={0.7}
+                  fadeOut={0.5}
+                  followMouse={false}
+                  mouseInfluence={0.2}
+                  hoverScale={1.2}
+                  parallax={0.05}
+                  clickBurst={false}
+                />
+              </div>
+              {/* The Image - Absolute, centered on top */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <img src={ProfilePic} className="w-54 md:w-84 h-54 md:h-84 rounded-[50%]" />
+              </div>
+            </section>
+
+            <section id="introPage" className="relative grid grid-cols-1 md:grid-cols-2 gap-10 py-8 sm:py-14 items-center z-50 w-full max-w-none">
+  
+              <div className="flex flex-col w-full text-center md:text-left gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+                <h2 className="font-semibold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight 
+                    grid grid-cols-1 md:grid-cols-[1fr_auto] lg:grid-cols-[1fr_225px] items-center gap-10 w-full">
+                  <div className="md:text-left md:whitespace-nowrap flex-1">
+                    Hi!! I'm <span className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">David</span> Battye 
+                    <br />
+                    Full Stack <span className="text-[#A855F7] font-bold drop-shadow-[0_0_15px_rgba(168,85,247,0.7)]">Developer</span>
+                  </div>
+
+                  {/* Icon floats right on medium+ screens instead of being trapped */}
+                  <div style={{ width: '225px', height: '225px' }} className="flex justify-center items-center mx-auto md:mx-0">
+                    <MetallicPaint
+                      imageSrc={DevIcon}
+                      seed={42}
+                      scale={4}
+                      patternSharpness={1}
+                      noiseScale={0.5}
+                      speed={0.3}
+                      liquid={0.75}
+                      mouseAnimation={false}
+                      brightness={2}
+                      contrast={0.5}
+                      refraction={0.01}
+                      blur={0.015}
+                      chromaticSpread={2}
+                      fresnel={1}
+                      angle={0}
+                      waveAmplitude={1}
+                      distortion={1}
+                      contour={0.2}
+                      lightColor="#ffffff"
+                      darkColor="#000000"
+                      tintColor="#feb3ff"
+                    />
+                  </div>
+                </h2>
+
+                {/* Paragraph text expands across the space */}
+                <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl">
+                  My <span className="text-cyan-400 font-medium">favourite tech</span> includes Javascript, Typescript, Vite, React, SvelteKit, TailWind, Node, Zustand, Tanstack, Express, Heroku, Netlify & Render
+                </p>
+                
+                {/* Button handles left alignment nicely */}
+                <a 
+                  href="https://www.linkedin.com/in/david-battye-9932665a/" 
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mx-auto md:mr-auto md:ml-0 text-base sm:text-lg md:text-xl relative overflow-hidden px-8 py-3.5 group rounded-full bg-white text-slate-950 font-semibold shadow-xl hover:scale-105 transition-transform duration-200 cursor-pointer"
+                >
+                  <div className="absolute top-0 right-full w-full h-full bg-cyan-400 opacity-20 group-hover:translate-x-full duration-200" />
+                  <h4 className="relative z-10 flex items-center gap-2">Get in touch &rarr;</h4>
+                </a>
+              </div>
+            </section>
+
+            <section id="logoLoop">
+              <div className="w-full h-16 md:h-55 relative flex items-center justify-center">
+                <Suspense 
+                  fallback={
+                    <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
+                  }
+                >
+                  {/* Basic horizontal loop */}
+                  <LogoLoop
+                    logos={techLogos}
+                    speed={75}
+                    direction="left"
+                    logoHeight={80}
+                    gap={60}
+                    hoverSpeed={0}
+                    // scaleOnHover
+                    // ariaLabel="Technology partners"
+                  />
+
+                </Suspense>
+              </div>
+            </section>
+
+            <section id="projects" className="py-20 lg:py-32 flex flex-col gap-24">
+              <div className="flex flex-col gap-2 text-center">
+                <h6 className="text-lg sm:text-xl md:text-2xl">
+                  A few of my creative endeavours
+                </h6>
+                <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl">
+                  Curious to <span className="poppins text-cyan-400">see</span> my work?
+                </h3>
+              </div>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" 
+                className="mx-auto px-4 py-2 rounded-md border border-solid border-white 
+                flex items-center gap-2 -mb-4 sm:mb-0 -mt-10 hover:border-cyan-700 hover:text-cyan-400 duration-200">
+                  <i className="fa-regular fa-circle-play"></i>
+                  <p>DECRYPT_SYSTEM_DEMO.mp4</p> {/* Fits right into the mission log style */}
+              </a>
+
+              {/* Project Card Grid */}
+              {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-14"> */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-28 gap-y-28 max-w-7xl mx-auto">
+                {myProjects.map((project, idx) => (
+                  <>
+                    <Suspense 
+                      fallback={
+                        <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
+                      }
+                    >
+                      <ElectricBorder key={idx}>
+                          <Projects project={project}/>
+                      </ElectricBorder>
+                    </Suspense>
+                  </>
+
+                ))}
+              </div>
+
+              
+            </section>
+
+
+            <section id="about" className="py-20 pt-10 lg:pt-16 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative">
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <Suspense 
+                  fallback={
+                    <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
+                  }
+                >
+                  <Antigravity    
+                    count={300}    
+                    magnetRadius={6}    
+                    ringRadius={7}    
+                    waveSpeed={0.4}    
+                    waveAmplitude={1}    
+                    particleSize={1.5}    
+                    lerpSpeed={0.05}    
+                    color="#5227FF"    
+                    autoAnimate    
+                    particleVariance={1}    
+                    rotationSpeed={0}    
+                    depthFactor={1}    
+                    pulseSpeed={3}    
+                    particleShape="capsule"    
+                    fieldStrength={10}
+                  />
+                </Suspense>
+              </div>
+              {/* Header Container */}
+              <div className="flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 py-4">
+                <h6 className="text-lg sm:text-xl md:text-2xl">Want to know more?</h6>
+                <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl">
+                  A bit <span className="poppins text-violet-400">about</span> me.
+                </h3>
+              </div>
+
+              <p className="mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl">I am . . .</p>
+
+              {/* Benefits Loop */}
+              <div className="flex flex-col gap-20 max-w-7xl mx-auto">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex gap-6 sm:gap-8">
+                    <p className="poppins text-4xl sm:text-5xl md:text-6xl text-slate-500 font-semibold">
+                      0{index + 1}
+                    </p>
+                    <div className="flex flex-col gap-6 sm:gap-8">
+                      <h3 className="text-2xl sm:text-3xl md:text-5xl">
+                        {benefit.name}
+                      </h3>
+                      <p>{benefit.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Comparison Table Section */}
+              <h5 className="text-2xl sm:text-3xl font-semibold text-center poppins">
+                The <span className="text-violet-700 poppins">Complete </span> Package
+              </h5>
+              
+              <div className="flex flex-col overflow-x-scroll gap-10 max-w-200 mx-auto w-full">
+                <table className="bg-white text-slate-700 rounded text-center">
+                  <thead className="border-b border-solid border-slate-200">
+                    <tr>
+                      <th />
+                      <th className="whitespace-nowrap p-2 px-4">Candidate #1</th>
+                      <th className="whitespace-nowrap p-2 px-4">Candidate #2</th>
+                      <th className="whitespace-nowrap p-2 px-4">Candidate #3</th>
+                      <th className="whitespace-nowrap bg-violet-700 text-white p-4 px-8 rounded-tr">Me</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-solid border-slate-200">
+                      <td className="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-base whitespace-nowrap">Dedication</td>
+                      <td><i className="fa-solid fa-xmark text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-xmark text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-green-500"></i></td>
+                    </tr>
+                    <tr className="border-b border-solid border-slate-200">
+                      <td className="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-base whitespace-nowrap">Critical Thought</td>
+                      <td><i className="fa-solid fa-xmark text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-green-500"></i></td>
+                    </tr>
+                    <tr className="border-b border-solid border-slate-200">
+                      <td className="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-base whitespace-nowrap">Interpersonal Skills</td>
+                      <td><i className="fa-solid fa-check text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-xmark text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-green-500"></i></td>
+                    </tr>
+                    <tr className="border-b border-solid border-slate-200">
+                      <td className="border-r border-solid border-white pl-4 pr-8 py-4 font-semibold text-base whitespace-nowrap">Programming Ability</td>
+                      <td><i className="fa-solid fa-check text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-xmark text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-slate-500"></i></td>
+                      <td><i className="fa-solid fa-check text-green-500"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="mx-auto -mt-12 italic sm:hidden opacity-50">
+                <p>Scroll to see more &rarr;</p>
+              </div>          
+            </section>
+
+            <section id="lastBit" className='relative flex items-center justify-center'>
+              <Suspense 
+                fallback={
+                  <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
+                }
+              >
+                <div className='absolute mx-auto justify-center items-center text-3xl md:text-7xl text-[#6366F1] font-bold drop-shadow-[0_0_20px_rgba(99,102,241,0.8)] animate-pulse animation-duration-[3s]'>
+                  <ShinyText 
+                    text="✨ So why not invest?"
+                    speed={2}
+                    delay={0}
+                    color="#6d28d9"
+                    shineColor="#ffffff"
+                    spread={120}
+                    direction="left"
+                    yoyo={false}
+                    pauseOnHover={false}
+                    disabled={false}
+                  />
+                </div>
+              </Suspense>
+            </section>
+
+            <section id="logoLoop2">
+              <div className="w-full h-20 md:h-55 relative my-16 flex items-center justify-center">
+                <Suspense 
+                  fallback={
+                    <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
+                  }
+                >
+                  {/* Basic horizontal loop */}
+                  <LogoLoop
+                    logos={techLogos}
+                    speed={75}
+                    direction="left"
+                    logoHeight={100}
+                    gap={60}
+                    hoverSpeed={0}
+                    // scaleOnHover
+                    // ariaLabel="Technology partners"
+                  />
+                </Suspense>
+              </div>
+            </section>
+          </main>
+
+          <footer className="relative border-t border-slate-900 bg-slate-950/60 backdrop-blur-md mt-32 w-full">
+            <div className="absolute top-0 left-0 w-full h-0.5 bg-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+            
+            <div className="max-w-7xl mx-8 px-6 py-12 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">     
+              <div className="flex flex-col gap-2 text-center md:text-left font-mono">
+                <div className="text-sm tracking-widest text-cyan-400 animate-pulse uppercase">
+                  David Battye &bull; Full Stack Developer //
+                </div>
+                <div className="flex items-center justify-center md:justify-start gap-2 text-sm text-emerald-400">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span>HAVE DEVELOPED DESKTOP APPS TOO</span>
+                </div>
+                <p className="text-xs text-slate-400 max-w-xs mt-1">
+                  Engineered with modern web technologies focusing on performance, responsive design, and clean user experiences. Open to new opportunities.
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center md:items-end gap-3">
+                <div className="font-mono text-xs tracking-widest text-slate-300 uppercase">
+                  // CONTACT
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <a href="mailto:battye_david@yahoo.co.uk" title="Send Secure Transmission"
+                    className="p-2.5 rounded-lg border border-slate-900 bg-slate-900/30 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 hover:shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-300"
+                  >
+                    <HiOutlineMail className="text-xl" />
+                  </a>
+                  <a href="https://github.com/usernameistai" target="_blank" rel="noreferrer" title="Source Data Repositories"
+                    className="p-2.5 rounded-lg border border-slate-900 bg-slate-900/30 text-slate-300 hover:text-[#A855F7] hover:border-purple-500/40 hover:shadow-[0_0_15px_rgba(168,85,247,0.15)] transition-all duration-300"
+                  >
+                    <SiGithub className="text-xl" />
+                  </a>
+                  <a href="https://www.linkedin.com/in/david-battye-9932665a/" target="_blank" rel="noreferrer" title="Connect Terminal Node"
+                    className="p-2.5 rounded-lg border border-slate-900 bg-slate-900/30 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 hover:shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-300"
+                  >
+                    <SlSocialLinkedin className="text-xl" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-slate-900/60 bg-slate-950/80 py-4 px-6">
+              <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-[11px] tracking-wider text-slate-500 text-center sm:text-left">
+                <div>
+                  &copy; {new Date().getFullYear()} &bull; DB_OPERATIONS_MANIFEST
+                </div>
+                <div className="text-slate-400 uppercase text-[10px] bg-slate-900/50 px-2 py-0.5 rounded border border-slate-800">
+                  TRANSPILED FROM SVELTE INTERNALS INTO REACT
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </ClickSpark>
+    </>
+  );
+}
+
+export default App;
+

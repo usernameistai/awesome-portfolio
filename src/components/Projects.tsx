@@ -10,23 +10,39 @@ export interface ProjectData {
 
 export interface ProjectCardProps {
   project: ProjectData;
+  currentOutlook: 'TECH25' | 'WINTERSUN' | 'OTHER'
 }
 
-const Projects = ({ project }: ProjectCardProps) => {
+const Projects = ({ project, currentOutlook }: ProjectCardProps) => {
+  const theme = {
+    TECH25: {
+      text: "text-white",
+      textTwo: "text-slate-300",
+    },
+    WINTERSUN: {
+      text: "text-slate-900/60",
+      textTwo: "text-slate-500", 
+    },
+    OTHER: {
+      text: "text-white",
+      textTwo: "text-slate-300",
+      
+    }
+  };
+
   return (
     <a
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-4 sm:p-6 md:p-8 mb-2 flex flex-col gap-4 rounded-lg text-center cursor-pointer group hover:border-violet-400 duration-200"
-      
+      className="p-4 sm:p-6 md:p-8 mb-2 flex flex-col gap-4 rounded-lg text-center cursor-pointer group hover:border-violet-400 duration-200 z-999"
     >
       {/* Floating Icon Box (Negative Margin Trick) */}
-      <div className="grid place-items-center px-4 text-5xl md:text-6xl -mt-10 sm:-mt-12 md:-mt-14 lg:-mt-16 mx-auto duration-200">
+      <div className="relative z-50 grid place-items-center px-4 text-5xl md:text-6xl -mt-10 sm:-mt-12 md:-mt-14 lg:-mt-16 mx-auto duration-200">
         <i className={project.icon} />
       </div>
 
-      <h3 className="font-medium text-xl sm:text-2xl md:text-3xl">
+      <h3 className={`font-medium text-xl sm:text-2xl md:text-3xl ${theme[currentOutlook].text}`}>
         {project.name}
       </h3>
 

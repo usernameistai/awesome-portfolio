@@ -14,7 +14,7 @@ import MetallicPaint from "./components/MetallicPaint";
 import { SiReact, SiVite, SiTypescript, SiTailwindcss, SiNodedotjs, 
   SiExpress, SiMongodb, SiSvelte, SiPostman, SiHeroku, SiHtml5, SiTauri,
   SiNetlify, SiRender, SiGithub } from 'react-icons/si';
-  import { SlSocialLinkedin } from "react-icons/sl";
+import { SlSocialLinkedin } from "react-icons/sl";
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { FaCss3, FaRust  } from "react-icons/fa6";
 import { HiOutlineMail } from 'react-icons/hi';
@@ -22,6 +22,73 @@ import DevIcon from './assets/dev.svg';
 
 const App = () => {
   const [activeSelection, setActiveSelection] = useState('hero');
+
+  type Outlook = 'TECH25' | 'WINTERSUN' | 'OTHER';
+  const [currentOutlook, setCurrentOutlook] = useState<Outlook>('TECH25');
+
+  const theme = {
+    TECH25: {
+      sparkColor: "#22D3EE",
+      bg: "bg-slate-950 selection:bg-cyan-500",
+      text: "text-white",
+      textTwo: "text-slate-300",
+      selection: "selection:bg-cyan-500 selection:text-white",
+      navBg: "bg-slate-950/80 border-b border-slate-900",
+      navTextActive: "bg-cyan-950/40 text-cyan-400 border-cyan-800/60 shadow-[0_0_15px_rgba(34,211,238,0.15)]",
+      navTextInactive: "text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/50",
+      cardBg: "bg-slate-900/30 border-slate-900",
+      accentText: "text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]",
+      accentTextTwo: "text-[#A855F7] font-bold drop-shadow-[0_0_15px_rgba(168,85,247,0.7)]",
+      ringColor1: "#A855F7",
+      ringColor2: "#6366F1",
+      electricBorder: "#7df9ff",
+      antigravityColor: "#5227FF",
+      particleColor: "#5227FF",
+      lineColor: "flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 py-4 mb-10",
+      shinyText: "#5227FF",
+    },
+    WINTERSUN: {
+      // Crisp ocean backdrop, dark navy text, tropical cyan/teal accents
+      sparkColor: "#22D3EE",
+      bg: "bg-slate-50 selection:bg-cyan-200",
+      text: "text-slate-900/60",
+      textTwo: "text-slate-500",
+      selection: "selection:bg-cyan-500 selection:text-white",
+      navBg: "bg-white/80 border-b border-slate-200",
+      navTextActive: "bg-cyan-50 text-cyan-600 border-cyan-200 shadow-[0_4px_12px_rgba(6,182,212,0.1)]",
+      navTextInactive: "text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/50",
+      cardBg: "bg-white border-slate-200 shadow-sm",
+      accentText: "text-cyan-600 font-bold", 
+      accentTextTwo: "text-emerald-600 font-bold", 
+      ringColor1: "#06b6d4", 
+      ringColor2: "#10b981",
+      electricBorder: "#7df9ff",
+      antigravityColor: "#7df9ff",
+      particleColor: "#0ea5e9",
+      lineColor: "flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-[#5227FF] after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-[#5227FF] py-4 mb-10",
+      shinyText: "#7df9ff",
+    },
+    OTHER: {
+      sparkColor: "#22D3EE",
+      bg: "bg-zinc-950/90 text-zinc-50",
+      text: "text-white",
+      textTwo: "text-slate-300",
+      selection: "selection:bg-cyan-500 selection:text-white",
+      navBg: "bg-zinc-950/80 border-b border-zinc-900",
+      navTextActive: "text-white border-zinc-700",
+      navTextInactive: "text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/500",
+      cardBg: "bg-zinc-900/50 border-zinc-800",
+      accentText: "text-amber-500 font-bold",
+      accentTextTwo: "text-orange-500 font-bold",
+      ringColor1: "#ffffff",
+      ringColor2: "#ffffff",
+      electricBorder: "#ffffff",
+      antigravityColor: "#71717a",
+      particleColor: "#71717a",
+      lineColor: "flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 py-4 mb-10",
+      shinyText: "#71717a",
+    },
+  };
 
   const navLinks= [
     { label: 'System_Init', target: '#hero'},
@@ -141,7 +208,7 @@ const App = () => {
     { node: <FaRust className="text-[#CE412B]" />, title: "Rust", href: "https://www.rust-lang.org" },
     { node: <SiTauri className="text-[#24C8DB]" />, title: "Tauri", href: "https://tauri.app" },
   ];
-
+  
   const benefits = [
         {name: 'a self taught developer', desc: 'I studied an MSc in I.T. course but mostly I taught myself to code using free online resources and became entwined with the creativity and problem solving that is involved in developing and engineering innovative new online experiences. Starting off with JavaScript, HTML & CSS and evolving my knowledge base to include JavaScript frameworks, backend programming, design, cloud services and much much more.'},
         {name: 'a product design and UX fanatic', desc: 'Carefully crafting and designing amazing user experiences allows me to express and experiment with every morsel of creativity I have. I love the challenge of learning new design concepts and enabling users with amazing online experiences. Did you click the link?'},
@@ -151,16 +218,16 @@ const App = () => {
   return (
     <>
       <ClickSpark
-        sparkColor="#22D3EE"
+        sparkColor={theme[currentOutlook].sparkColor}
         sparkSize={10}
         sparkRadius={15}
         sparkCount={8}
         duration={400}
       >
-        <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-cyan-500 selection:text-white">
+        <div className={`min-h-screen text-white font-sans ${theme[currentOutlook].bg} ${theme[currentOutlook].text} ${theme[currentOutlook].selection}`}>
           
           {/* SEMI NAVBAR (QUICK LINKS) */}
-          <nav className="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-900 px-4 md:px-6 py-3 md:py-4">
+          <nav className={`sticky top-0 z-50 backdrop-blur-md px-4 md:px-6 py-3 md:py-4 ${theme[currentOutlook].navBg}`}>
             <div className="max-w-6xl mx-auto flex items-center justify-between">
               <div className="font-mono font-semibold tracking-widest text-[11px] md:text-base text-cyan-400 animate-pulse">
                 DB_PORTFOLIO //
@@ -171,14 +238,29 @@ const App = () => {
                       onClick={() => setActiveSelection(link.target.replace('#', ''))}
                         className={`font-mono text-xs md:text-sm px-1.5 md:px-3 py-1.5 rounded transition-all duration-200 border 
                           ${ activeSelection === link.target.replace('#', '')
-                            ? 'bg-cyan-950/40 text-cyan-400 border-cyan-800/60 shadow-[0_0_15px_rgba(34,211,238,0.15)]'
-                            : 'text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/50'
+                            ? `${theme[currentOutlook].navTextActive}`
+                            : `${theme[currentOutlook].navTextInactive}`
                           }`}
                     
                   >
                     {link.label}
                   </a>
                 ))}
+                <div className="flex bg-slate-900/10 dark:bg-slate-800/40 p-1 rounded-lg border border-slate-200 dark:border-slate-800 gap-1">
+                  {(['TECH25', 'WINTERSUN', 'OTHER'] as Outlook[]).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setCurrentOutlook(mode)}
+                      className={`px-3 py-1 text-xs font-mono rounded transition-all cursor-pointer ${
+                        currentOutlook === mode
+                          ? 'bg-cyan-500 text-white shadow-sm font-semibold'
+                          : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
+                      }`}
+                    >
+                      {mode}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </nav>
@@ -188,17 +270,17 @@ const App = () => {
               {/* The Ring Component - Absolute inside the 96x96 box */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <MagicRings
-                  color="#A855F7"
-                  colorTwo="#6366F1"
-                  ringCount={6}
-                  speed={1}
+                  color={theme[currentOutlook].ringColor1}
+                  colorTwo={theme[currentOutlook].ringColor2}
+                  ringCount={10}
+                  speed={1.5}
                   attenuation={10}
                   lineThickness={2}
                   baseRadius={0.35}
                   radiusStep={0.1}
                   scaleRate={0.1}
                   opacity={1}
-                  blur={0}
+                  blur={0.25}
                   noiseAmount={0.1}
                   rotation={0}
                   ringGap={1.5}
@@ -218,18 +300,18 @@ const App = () => {
             </section>
 
             <section id="introPage" className="relative grid grid-cols-1 md:grid-cols-2 gap-10 py-8 sm:py-14 items-center z-50 w-full max-w-none">
-  
               <div className="flex flex-col w-full text-center md:text-left gap-4 sm:gap-6 md:gap-8 lg:gap-10">
                 <h2 className="font-semibold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight 
                     grid grid-cols-1 md:grid-cols-[1fr_auto] lg:grid-cols-[1fr_225px] items-center gap-10 w-full">
-                  <div className="md:text-left md:whitespace-nowrap flex-1">
+                  <div className={`md:text-left md:whitespace-nowrap flex-1 ${theme[currentOutlook].text}`}>
                     Hi!! I'm <span className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">David</span> Battye 
+                    
                     <br />
                     Full Stack <span className="text-[#A855F7] font-bold drop-shadow-[0_0_15px_rgba(168,85,247,0.7)]">Developer</span>
                   </div>
 
                   {/* Icon floats right on medium+ screens instead of being trapped */}
-                  <div style={{ width: '225px', height: '225px' }} className="flex justify-center items-center mx-auto md:mx-0">
+                  <div style={{ width: '225px', height: '225px' }} className="flex justify-center items-center mx-auto">
                     <MetallicPaint
                       imageSrc={DevIcon}
                       seed={42}
@@ -257,7 +339,7 @@ const App = () => {
                 </h2>
 
                 {/* Paragraph text expands across the space */}
-                <p className="text-base sm:text-lg md:text-xl text-slate-300 max-w-3xl">
+                <p className={`text-base sm:text-lg md:text-xl ${theme[currentOutlook].textTwo} max-w-3xl`}>
                   My <span className="text-cyan-400 font-medium">favourite tech</span> includes Javascript, Typescript, Vite, React, SvelteKit, TailWind, Node, Zustand, Tanstack, Express, Heroku, Netlify & Render
                 </p>
                 
@@ -298,7 +380,7 @@ const App = () => {
             </section>
 
             <section id="projects" className="py-20 lg:py-32 flex flex-col gap-24">
-              <div className="flex flex-col gap-2 text-center">
+              <div className={`flex flex-col gap-2 text-center ${theme[currentOutlook].text}`}>
                 <h6 className="text-lg sm:text-xl md:text-2xl">
                   A few of my creative endeavours
                 </h6>
@@ -307,10 +389,11 @@ const App = () => {
                 </h3>
               </div>
               <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" 
-                className="mx-auto px-4 py-2 rounded-md border border-solid border-white 
-                flex items-center gap-2 -mb-4 sm:mb-0 -mt-10 hover:border-cyan-700 hover:text-cyan-400 duration-200">
+                className={`mx-auto px-4 py-2 rounded-md border border-solid border-white 
+                flex items-center gap-2 -mb-4 sm:mb-0 -mt-10 hover:border-cyan-700
+                 hover:text-cyan-400 duration-200 ${theme[currentOutlook].text}`}>
                   <i className="fa-regular fa-circle-play"></i>
-                  <p>DECRYPT_SYSTEM_DEMO.mp4</p> {/* Fits right into the mission log style */}
+                  <p>DECRYPT_SYSTEM_DEMO.mp4</p>
               </a>
 
               {/* Project Card Grid */}
@@ -323,18 +406,20 @@ const App = () => {
                         <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
                       }
                     >
-                      <ElectricBorder key={idx}>
-                          <Projects project={project}/>
+                      <ElectricBorder 
+                        key={idx}
+                        color={theme[currentOutlook].electricBorder}
+                        chaos={0.12}
+                      >
+                          <Projects project={project} currentOutlook={currentOutlook}/>
                       </ElectricBorder>
                     </Suspense>
                   </>
-
                 ))}
               </div>
 
               
             </section>
-
 
             <section id="about" className="py-20 pt-10 lg:pt-16 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative">
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -351,7 +436,7 @@ const App = () => {
                     waveAmplitude={1}    
                     particleSize={1.5}    
                     lerpSpeed={0.05}    
-                    color="#5227FF"    
+                    color={theme[currentOutlook].antigravityColor}    
                     autoAnimate    
                     particleVariance={1}    
                     rotationSpeed={0}    
@@ -363,17 +448,17 @@ const App = () => {
                 </Suspense>
               </div>
               {/* Header Container */}
-              <div className="flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 py-4">
+              <div className={`${theme[currentOutlook].lineColor} ${theme[currentOutlook].textTwo}`}>
                 <h6 className="text-lg sm:text-xl md:text-2xl">Want to know more?</h6>
-                <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl">
+                <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl my-2">
                   A bit <span className="poppins text-violet-400">about</span> me.
                 </h3>
               </div>
 
-              <p className="mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl">I am . . .</p>
+              <p className={`mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl ${theme[currentOutlook].text}`}>I am . . .</p>
 
               {/* Benefits Loop */}
-              <div className="flex flex-col gap-20 max-w-7xl mx-auto">
+              <div className={`flex flex-col gap-20 max-w-7xl mx-auto ${theme[currentOutlook].textTwo}`}>
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex gap-6 sm:gap-8">
                     <p className="poppins text-4xl sm:text-5xl md:text-6xl text-slate-500 font-semibold">
@@ -390,7 +475,7 @@ const App = () => {
               </div>
 
               {/* Comparison Table Section */}
-              <h5 className="text-2xl sm:text-3xl font-semibold text-center poppins">
+              <h5 className={`text-2xl sm:text-3xl font-semibold text-center poppins ${theme[currentOutlook].text}`}>
                 The <span className="text-violet-700 poppins">Complete </span> Package
               </h5>
               
@@ -443,18 +528,29 @@ const App = () => {
               </div>          
             </section>
 
-            <section id="lastBit" className='relative flex items-center justify-center'>
+            <section className='pt-10 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative'>
+              <div className={`${theme[currentOutlook].lineColor} ${theme[currentOutlook].textTwo}`}>
+                <h6 className="text-lg sm:text-xl md:text-2xl">Not given up yet?</h6>
+                <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl py-2">
+                  Contact <span className="poppins text-violet-400">details</span> below &darr;
+                </h3>
+              </div>
+
+              <p className="mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl">A question for you might be...</p>
+            </section>
+
+            <section id="lastBit" className='relative flex items-center justify-center mt-60'>
               <Suspense 
                 fallback={
                   <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
                 }
               >
-                <div className='absolute mx-auto justify-center items-center text-3xl md:text-7xl text-[#6366F1] font-bold drop-shadow-[0_0_20px_rgba(99,102,241,0.8)] animate-pulse animation-duration-[3s]'>
+                <div className='absolute mx-auto justify-center items-center text-3xl md:text-7xl text-[#6366F1] font-bold drop-shadow-[0_0_20px_rgba(99,102,241,0.8)] animation-duration-[3s]'>
                   <ShinyText 
-                    text="✨ So why not invest?"
+                    text="📡🛰️ So why not invest?"
                     speed={2}
                     delay={0}
-                    color="#6d28d9"
+                    color={theme[currentOutlook].shinyText}
                     shineColor="#ffffff"
                     spread={120}
                     direction="left"
@@ -467,7 +563,7 @@ const App = () => {
             </section>
 
             <section id="logoLoop2">
-              <div className="w-full h-20 md:h-55 relative my-16 flex items-center justify-center">
+              <div className="w-full h-20 md:h-55 relative mt-36 mb-8 flex items-center justify-center">
                 <Suspense 
                   fallback={
                     <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
@@ -489,29 +585,32 @@ const App = () => {
             </section>
           </main>
 
-          <footer className="relative border-t border-slate-900 bg-slate-950/60 backdrop-blur-md mt-32 w-full">
+          <footer className="relative border-t border-slate-900 bg-slate-950/60 backdrop-blur-md w-full">
             <div className="absolute top-0 left-0 w-full h-0.5 bg-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
             
-            <div className="max-w-7xl mx-8 px-6 py-12 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">     
-              <div className="flex flex-col gap-2 text-center md:text-left font-mono">
+            <div className="mx-8 px-6 py-12 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">     
+              <div id="footerBlurb" className="flex flex-col gap-2 text-center md:text-left font-mono">
                 <div className="text-sm tracking-widest text-cyan-400 animate-pulse uppercase">
                   David Battye &bull; Full Stack Developer //
                 </div>
                 <div className="flex items-center justify-center md:justify-start gap-2 text-sm text-emerald-400">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                  <span>HAVE DEVELOPED DESKTOP APPS TOO</span>
+                  <span>DESKTOP APPS ALSO AVAILABLE ON GITHUB NOW</span>
                 </div>
                 <p className="text-xs text-slate-400 max-w-xs mt-1">
                   Engineered with modern web technologies focusing on performance, responsive design, and clean user experiences. Open to new opportunities.
                 </p>
+                <p className="text-xs text-slate-400 max-w-xs mt-1">
+                  What, is the capital of Assyria?
+                </p>
               </div>
 
-              <div className="flex flex-col items-center md:items-end gap-3">
+              <div id="footerContact" className="flex flex-col items-center md:items-end gap-3">
                 <div className="font-mono text-xs tracking-widest text-slate-300 uppercase">
                   // CONTACT
                 </div>
                 
-                <div className="flex items-center gap-4">
+                <div className="flex gap-4">
                   <a href="mailto:battye_david@yahoo.co.uk" title="Send Secure Transmission"
                     className="p-2.5 rounded-lg border border-slate-900 bg-slate-900/30 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 hover:shadow-[0_0_15px_rgba(34,211,238,0.15)] transition-all duration-300"
                   >
@@ -534,10 +633,10 @@ const App = () => {
             <div className="border-t border-slate-900/60 bg-slate-950/80 py-4 px-6">
               <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-[11px] tracking-wider text-slate-500 text-center sm:text-left">
                 <div>
-                  &copy; {new Date().getFullYear()} &bull; DB_OPERATIONS_MANIFEST
+                  &copy; {new Date().getFullYear()} &bull; DB_UNIVERSAL_FLOW
                 </div>
                 <div className="text-slate-400 uppercase text-[10px] bg-slate-900/50 px-2 py-0.5 rounded border border-slate-800">
-                  TRANSPILED FROM SVELTE INTERNALS INTO REACT
+                  INITIALLY SVELTE &rarr; REACT & REACTBITS
                 </div>
               </div>
             </div>

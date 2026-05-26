@@ -1,25 +1,222 @@
 import { useState, lazy, Suspense } from 'react';
 import ProfilePic from './assets/profilepic3.webp';
 import Projects from './components/Projects';
+// import { type ProjectData } from './components/Projects';
+import { type Outlook, theme, navLinks } from './data/themeData';
+import { myProjects, techLogos, benefits } from './data/portfolioData'; 
+
 import MagicRings from './components/MagicRings';
 import ClickSpark from './components/ClickSpark';
 const ElectricBorder = lazy(() => import('./components/ElectricBorder'));
 const Antigravity = lazy(() => import('./components/Antigravity'));
 const ShinyText = lazy(() => import('./components/ShinyText'));
 const LogoLoop = lazy(() => import('./components/LogoLoop'));
-const MetallicPaint = lazy(() => import("./components/MetallicPaint"));
+import MetallicPaint from "./components/MetallicPaint";
 
-import { type Outlook, theme, navLinks } from './data/themeData';
-import { myProjects, techLogos, benefits } from './data/portfolioData'; 
-
+// import { SiReact, SiVite, SiTypescript, SiTailwindcss, SiNodedotjs, 
+//   SiExpress, SiMongodb, SiSvelte, SiPostman, SiHeroku, SiHtml5, SiTauri,
+//   SiNetlify, SiRender, SiGithub } from 'react-icons/si';
 import { SiGithub } from 'react-icons/si';
 import { SlSocialLinkedin } from "react-icons/sl";
+// import { VscVscodeInsiders } from "react-icons/vsc";
+// import { FaCss3, FaRust  } from "react-icons/fa6";
 import { HiOutlineMail } from 'react-icons/hi';
 import DevIcon from './assets/dev.svg';
 
 const App = () => {
   const [activeSelection, setActiveSelection] = useState('hero');
+
+  // type Outlook = 'TECH25' | 'WINTERSUN' | 'OTHER';
   const [currentOutlook, setCurrentOutlook] = useState<Outlook>('TECH25');
+
+  // const theme = {
+  //   TECH25: {
+  //     sparkColor: "#22D3EE",
+  //     bg: "bg-slate-950 selection:bg-cyan-500",
+  //     text: "text-white",
+  //     textTwo: "text-slate-300",
+  //     selection: "selection:bg-cyan-500 selection:text-white",
+  //     navBg: "bg-slate-950/80 border-b border-slate-900",
+  //     navTextActive: "bg-cyan-950/40 text-cyan-400 border-cyan-800/60 shadow-[0_0_15px_rgba(34,211,238,0.15)]",
+  //     navTextInactive: "text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/50",
+  //     cardBg: "bg-slate-900/30 border-slate-900",
+  //     accentText: "text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]",
+  //     accentTextTwo: "text-[#A855F7] font-bold drop-shadow-[0_0_15px_rgba(168,85,247,0.7)]",
+  //     ringColor1: "#A855F7",
+  //     ringColor2: "#6366F1",
+  //     electricBorder: "#7df9ff",
+  //     antigravityColor: "#5227FF",
+  //     particleColor: "#5227FF",
+  //     lineColor: "flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 py-4 mb-10",
+  //     shinyText: "#5227FF",
+  //   },
+  //   WINTERSUN: {
+  //     // Crisp ocean backdrop, dark navy text, tropical cyan/teal accents
+  //     sparkColor: "#22D3EE",
+  //     bg: "bg-slate-50 selection:bg-cyan-200",
+  //     text: "text-slate-900/60",
+  //     textTwo: "text-slate-500",
+  //     selection: "selection:bg-cyan-500 selection:text-white",
+  //     navBg: "bg-white/80 border-b border-slate-200",
+  //     navTextActive: "bg-cyan-50 text-cyan-600 border-cyan-200 shadow-[0_4px_12px_rgba(6,182,212,0.1)]",
+  //     navTextInactive: "text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/50",
+  //     cardBg: "bg-white border-slate-200 shadow-sm",
+  //     accentText: "text-cyan-600 font-bold", 
+  //     accentTextTwo: "text-emerald-600 font-bold", 
+  //     ringColor1: "#06b6d4", 
+  //     ringColor2: "#10b981",
+  //     electricBorder: "#7df9ff",
+  //     antigravityColor: "#7df9ff",
+  //     particleColor: "#0ea5e9",
+  //     lineColor: "flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-[#5227FF] after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-[#5227FF] py-4 mb-10",
+  //     shinyText: "#7df9ff",
+  //   },
+  //   OTHER: {
+  //     sparkColor: "#22D3EE",
+  //     bg: "bg-zinc-950/90 text-zinc-50",
+  //     text: "text-white",
+  //     textTwo: "text-slate-300",
+  //     selection: "selection:bg-cyan-500 selection:text-white",
+  //     navBg: "bg-zinc-950/80 border-b border-zinc-900",
+  //     navTextActive: "text-white border-zinc-700",
+  //     navTextInactive: "text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/500",
+  //     cardBg: "bg-zinc-900/50 border-zinc-800",
+  //     accentText: "text-amber-500 font-bold",
+  //     accentTextTwo: "text-orange-500 font-bold",
+  //     ringColor1: "#ffffff",
+  //     ringColor2: "#ffffff",
+  //     electricBorder: "#ffffff",
+  //     antigravityColor: "#71717a",
+  //     particleColor: "#71717a",
+  //     lineColor: "flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 py-4 mb-10",
+  //     shinyText: "#71717a",
+  //   },
+  // };
+
+  // const navLinks= [
+  //   { label: 'System_Init', target: '#hero'},
+  //   { label: 'Project_db', target: '#projects'},
+  //   { label: 'About_Log', target: '#about'},
+  // ];
+
+  // const myProjects: ProjectData[] = [
+  //   { 
+  //     name: 'PeakyBlogger', 
+  //     icon: 'fa-solid fa-tree text-[#6366F1]', 
+  //     href: 'https://peakyblogger-d362176b187f.herokuapp.com/', 
+  //     desc: (
+  //       <>
+  //         <p>PeakyBlogger is a Full Stack blogsite for my Father, created a <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">MongoDb Atlas, EJS, Passport, Vanilla JS, Express.js & Node.js</strong> CRUD application. Hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Heroku.</strong> This is so he can document his walks and eateries of the Peak District to promote healthy living and eating as well as wellbeing.</p>
+  //       </>
+  //     )
+  //   },
+  //   { 
+  //     name: 'HelpMe-Car', 
+  //     icon: 'fa-solid fa-hands text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://helpme-car.herokuapp.com/', 
+  //     desc: (
+  //       <>
+  //         <p>HelpMe-Car is a Full Stack web app to enable helping other people's cars, created a <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">MongoDb Atlas, Express.js, React.js & Node.js</strong> CRUD application. Hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Heroku.</strong>Here you can enter helpful suggestions from pre-written examples to a database to help individuals maintain their cars safely.</p>
+  //       </>
+  //     )
+  //   },
+  //   { 
+  //     name: 'Weather Or Not', 
+  //     icon: 'fa-solid fa-cloud-sun-rain text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://weather-orr-not.netlify.app/', 
+  //     desc: (
+  //       <>
+  //         <p>Weather Or Not is a Static web app to help you keep track of your local weather using OpenWeatherMap API. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React, Typescript & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong> You can keep track of weather from several areas, cities or regions.</p>
+  //       </>
+  //     )
+  //   },
+  //   { 
+  //     name: 'e-Commerce API Basic', 
+  //     icon: 'fa-solid fa-shop text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://e-commerce-api-basic.onrender.com/', 
+  //     desc: (
+  //       <>
+  //         <p>e-Commerce-API-Basic is a Static web app demonstrating an e-commerce site for my portfolio. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> This is more an app to search for items, using a dummyjson API product data and also dummy data for the users / top sellers. With night / day settings.</p>
+  //       </>
+  //     )
+  //   },
+  //   { 
+  //     name: 'D3.js Choropleth Map USA Edu.', 
+  //     icon: 'fa-solid fa-earth-americas text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://fcc-choropleth-map.onrender.com/', 
+  //     desc: (
+  //       <>
+  //         <p>Choropleth Map illustrating the % of adults with a bachelors degree over the age of 25 between 2010 - 2014. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js, HTML5 & CSS3</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> There is a tooltip for further information about the specific areas / regions. </p>
+  //       </>
+  //     )
+  //   },
+  //   { 
+  //     name: 'Todo-my-Todo', 
+  //     icon: 'fa-solid fa-list-ul text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://todo-my-todo.netlify.app/', 
+  //     desc:  (
+  //       <>
+  //         <p>Todo-my-Todo is a nicely designed and very simple todo list, using localstorage. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong> This is a basic todo app with only the funcitonality to edit or delete, looks retro however.</p>
+  //       </>
+  //     )
+  //   },
+  //   { 
+  //     name: 'Data Dashboard', 
+  //     icon: 'fa-solid fa-server text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://dashboard-1-ftx2.onrender.com/', 
+  //     desc: (
+  //       <>
+  //         <p>Data Dashboard is a Static web app to illustrate the principles of a data dashboard. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React, Chart.js, D3.js, Lucide-React & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> It is supposed to show how a genuine real-time data dashboard would look like. Would like to build one looking at Crypto.</p>
+  //       </>
+  //       )
+  //   },
+  //   { 
+  //     name: 'D3.js Heat Map', 
+  //     icon: 'fa-solid fa-fire-flame-curved text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://fcc-heat-map.onrender.com/', 
+  //     desc:  (
+  //       <>
+  //         <p>Heat Map illustrating the Monthly Global Land-Surface Temperature between 1753 - 2015. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js & HTML5/CSS3/JS</strong>This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong> There is a tooltip to give you more information going over the area, namely the variance to the global average plus more!</p>
+  //       </>
+  //       )
+  //   },
+  //   { 
+  //     name: 'StockMarket-WishList', 
+  //     icon: 'fa-solid fa-money-bill-trend-up text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+  //     href: 'https://stockmarket-wishlist.onrender.com/', 
+  //     desc: (
+  //       <>
+  //         <p>StockMarket-WishList is a Static web app to help you keep track of your favourite stock using NASDAQ100. Created using <strong className="text-[#6366F1]">Vite.js & TailwindCSS.</strong>This is hosted on <strong className="text-[#6366F1]">Render.</strong> The symbol used will bring up the stock of choice into the graph area of the app where you can select the relevant data you are after.</p>
+  //       </>
+  //       )
+  //   }
+  // ];
+
+  // const techLogos = [
+  //   { node: <SiVite className="text-[#863BFF]" />, title: "Vite", href: "https://vitejs.dev" },
+  //   { node: <SiReact className="text-[#61DBFB]" />, title: "React", href: "https://react.dev" },
+  //   { node: <SiTypescript className="text-[#3178C6]" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  //   { node: <SiTailwindcss className="text-[#06B6D4]" />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  //   { node: <VscVscodeInsiders className="text-[#007ACC]" />, title: "VS-Code", href: "https://www.heroku.com" },
+  //   { node: <SiNodedotjs className="text-[#5FA04E]" />, title: "Node.js", href: "https://nodejs.org" },
+  //   { node: <SiMongodb className="text-[#00ED64]" />, title: "MongoDB", href: "https://www.mongodb.com" },
+  //   { node: <SiExpress className="text-[#303030]" />, title: "Express", href: "https://expressjs.com" },
+  //   { node: <SiPostman className="text-[#FF6C37]" />, title: "Postman", href: "https://www.postman.com" },
+  //   { node: <SiHtml5 className="text-[#E34C26]" />, title: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5" },
+  //   { node: <SiHeroku className="text-[#430098]" />, title: "Heroku", href: "https://www.heroku.com" },
+  //   { node: <SiNetlify className="text-[#00C7B7]" />, title: "Netlify", href: "https://www.netlify.com" },
+  //   { node: <SiRender className="text-[#46E3B7]" />, title: "Render", href: "https://render.com" },
+  //   { node: <FaCss3 className="text-[#1572B6]" />, title: "CSS3", href: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+  //   { node: <SiSvelte className="text-[#FF3E00]" />, title: "Svelte", href: "https://svelte.dev" },
+  //   { node: <FaRust className="text-[#CE412B]" />, title: "Rust", href: "https://www.rust-lang.org" },
+  //   { node: <SiTauri className="text-[#24C8DB]" />, title: "Tauri", href: "https://tauri.app" },
+  // ];
+  
+  // const benefits = [
+  //   {name: 'a self taught developer', desc: 'I studied an MSc in I.T. course but mostly I taught myself to code using free online resources and became entwined with the creativity and problem solving that is involved in developing and engineering innovative new online experiences. Starting off with JavaScript, HTML & CSS and evolving my knowledge base to include JavaScript frameworks, backend programming, design, cloud services and much much more.'},
+  //   {name: 'a product design and UX fanatic', desc: 'Carefully crafting and designing amazing user experiences allows me to express and experiment with every morsel of creativity I have. I love the challenge of learning new design concepts and enabling users with amazing online experiences. Did you click the link?'},
+  //   {name: 'an excellent communicator', desc: 'Communication is key and it is a paramount value of mine. I believe in transparency and constructive communication above all else, it helps with physically and mentally unwell people. This helps me develop deep relationships and ensures my effectiveness and productivity in any work space with any team. This could be seen from my previous work in hospitals during the lock-down period, people in varying states of happiness & wellness and then there were the patients...'},
+  // ];
  
   return (
     <>
@@ -39,23 +236,10 @@ const App = () => {
                 DB_PORTFOLIO //
               </div>
               <div className="flex gap-2 md:gap-4">
-                <select 
-                  value={activeSelection}
-                  onChange={((e) => {
-                    const targetId = e.target.value;
-                    setActiveSelection(targetId);
-                    window.location.hash = `#${targetId}`;
-                  })}
-                  className="flex md:hidden bg-slate-900/80 border border-slate-700 font-mono text-xs text-cyan-400 px-2 py-1.5 rounded-lg focus:outline-none focus:border-cyan-500 cursor-pointer"
-                >
-                  <option value="hero" className="bg-slate-950 text-cyan-400">System_Init</option>
-                  <option value="projects" className="bg-slate-950 text-cyan-400">Project_db</option>
-                  <option value="about" className="bg-slate-950 text-cyan-400">About_Log</option>
-                </select>
                 {navLinks.map((link) => (
                   <a key={link.label} href={link.target}
                       onClick={() => setActiveSelection(link.target.replace('#', ''))}
-                        className={`hidden md:flex font-mono text-xs md:text-sm px-1.5 md:px-3 py-1.5 rounded transition-all duration-200 border 
+                        className={`font-mono text-xs md:text-sm px-1.5 md:px-3 py-1.5 rounded transition-all duration-200 border 
                           ${ activeSelection === link.target.replace('#', '')
                             ? `${theme[currentOutlook].navTextActive}`
                             : `${theme[currentOutlook].navTextInactive}`
@@ -65,63 +249,47 @@ const App = () => {
                     {link.label}
                   </a>
                 ))}
-                <div className="flex items-center gap-1">
-                  {/* MOBILE DROPDOWN: Visible only on small screens */}
-                  <select
-                    value={currentOutlook}
-                    onChange={(e) => setCurrentOutlook(e.target.value as Outlook)}
-                    className="block md:hidden bg-slate-900/80 border border-slate-700 font-mono text-xs text-cyan-400 px-2 py-1.5 rounded-lg focus:outline-none focus:border-cyan-500 cursor-pointer"
-                  >
-                    {/* Explicit options menu for mobile space */}
-                    <option value="TECH25" className="bg-slate-950 text-cyan-400">TECH25</option>
-                    <option value="WINTERSUN" className="bg-slate-950 text-cyan-400">WINTERSUN</option>
-                    <option value="OTHER" className="bg-slate-950 text-cyan-400">OTHER</option>
-                  </select>
-
-                  {/* DESKTOP BUTTONS: Hidden on mobile, visible on md+ screens */}
-                  <div className="hidden md:flex bg-slate-900/10 dark:bg-slate-800/40 p-1 rounded-lg border border-slate-200 dark:border-slate-800 gap-1">
-                    {(['TECH25', 'WINTERSUN', 'OTHER'] as Outlook[]).map((mode) => (
-                      <button
-                        key={mode}
-                        onClick={() => setCurrentOutlook(mode)}
-                        className={`px-3 py-1 text-xs font-mono rounded transition-all cursor-pointer ${
-                          currentOutlook === mode
-                            ? 'bg-cyan-500 text-white shadow-sm font-semibold'
-                            : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
-                        }`}
-                      >
-                        {mode}
-                      </button>
-                    ))}
-                  </div>
+                <div className="flex bg-slate-900/10 dark:bg-slate-800/40 p-1 rounded-lg border border-slate-200 dark:border-slate-800 gap-1">
+                  {(['TECH25', 'WINTERSUN', 'OTHER'] as Outlook[]).map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setCurrentOutlook(mode)}
+                      className={`px-3 py-1 text-xs font-mono rounded transition-all cursor-pointer ${
+                        currentOutlook === mode
+                          ? 'bg-cyan-500 text-white shadow-sm font-semibold'
+                          : 'text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200'
+                      }`}
+                    >
+                      {mode}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
           </nav>
 
-          <main className="flex flex-col flex-1 pb-4 mx-auto max-w-7xl">
-
-            <section id="hero" className="relative w-full h-[60vh] min-h-[65vh] flex flex-col items-center justify-center text-center md:px-2.5 overflow-visible">
-              <div className={`absolute inset-0 pointer-events-none overflow-visible opacity-75
-                ${currentOutlook === 'WINTERSUN' ? 'mix-blend-multiply' : 'mix-blend-screen'}`}> {/* Removed overflow-hidden from class */}
+          <main className="flex flex-col flex-1 pb-4 mx-auto space-y-20 max-w-7xl">
+            <section id="hero" className="relative w-full h-[60vh]">
+              {/* The Ring Component - Absolute inside the 96x96 box */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <MagicRings
                   color={theme[currentOutlook].ringColor1}
                   colorTwo={theme[currentOutlook].ringColor2}
-                  ringCount={12}
+                  ringCount={10}
                   speed={1.5}
                   attenuation={10}
                   lineThickness={2}
-                  baseRadius={0.25}
+                  baseRadius={0.35}
                   radiusStep={0.1}
                   scaleRate={0.1}
                   opacity={1}
                   blur={0.25}
                   noiseAmount={0.1}
                   rotation={0}
-                  ringGap={1.8}
+                  ringGap={1.5}
                   fadeIn={0.7}
                   fadeOut={0.5}
-                  followMouse={true}
+                  followMouse={false}
                   mouseInfluence={0.2}
                   hoverScale={1.2}
                   parallax={0.05}
@@ -130,13 +298,14 @@ const App = () => {
               </div>
               {/* The Image - Absolute, centered on top */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <img src={ProfilePic} className="w-54 md:w-84 h-54 md:h-84 rounded-[50%]" alt="David Battye Profile"/>
+                <img src={ProfilePic} className="w-54 md:w-84 h-54 md:h-84 rounded-[50%]" />
               </div>
             </section>
 
             <section id="introPage" className="relative grid grid-cols-1 md:grid-cols-2 gap-10 py-8 sm:py-14 items-center z-50 w-full max-w-none">
-              <div className="flex flex-col w-full md:px-2.5 text-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                <h2 className="font-semibold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight grid grid-cols-1 md:grid-cols-[1fr_auto] lg:grid-cols-[1fr_225px] items-center gap-10 w-full">
+              <div className="flex flex-col w-full text-center md:text-left gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+                <h2 className="font-semibold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight 
+                    grid grid-cols-1 md:grid-cols-[1fr_auto] lg:grid-cols-[1fr_225px] items-center gap-10 w-full">
                   <div className={`md:text-left md:whitespace-nowrap flex-1 ${theme[currentOutlook].text}`}>
                     Hi!! I'm <span className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">David</span> Battye 
                     
@@ -145,46 +314,35 @@ const App = () => {
                   </div>
 
                   {/* Icon floats right on medium+ screens instead of being trapped */}
-                  <div style={{ width: '225px', height: '225px' }} className="flex justify-center items-center mx-auto relative">
-                    <Suspense 
-                      fallback={
-                        <div 
-                          style={{ width: '225px', height: '225px' }} 
-                          className="rounded-full bg-slate-900/40 animate-pulse border border-cyan-500/20 flex items-center justify-center text-[10px] font-mono text-cyan-500/40 tracking-widest"
-                        >
-                          LOADING_SHADERS...
-                        </div>
-                      }
-                    >
-                      <MetallicPaint
-                        imageSrc={DevIcon}
-                        seed={42}
-                        scale={4}
-                        patternSharpness={1}
-                        noiseScale={0.5}
-                        speed={0.3}
-                        liquid={0.75}
-                        mouseAnimation={false}
-                        brightness={2}
-                        contrast={0.5}
-                        refraction={0.01}
-                        blur={0.015}
-                        chromaticSpread={2}
-                        fresnel={1}
-                        angle={0}
-                        waveAmplitude={1}
-                        distortion={1}
-                        contour={0.2}
-                        lightColor="#ffffff"
-                        darkColor="#000000"
-                        tintColor="#feb3ff"
-                      />
-                    </Suspense>
+                  <div style={{ width: '225px', height: '225px' }} className="flex justify-center items-center mx-auto">
+                    <MetallicPaint
+                      imageSrc={DevIcon}
+                      seed={42}
+                      scale={4}
+                      patternSharpness={1}
+                      noiseScale={0.5}
+                      speed={0.3}
+                      liquid={0.75}
+                      mouseAnimation={false}
+                      brightness={2}
+                      contrast={0.5}
+                      refraction={0.01}
+                      blur={0.015}
+                      chromaticSpread={2}
+                      fresnel={1}
+                      angle={0}
+                      waveAmplitude={1}
+                      distortion={1}
+                      contour={0.2}
+                      lightColor="#ffffff"
+                      darkColor="#000000"
+                      tintColor="#feb3ff"
+                    />
                   </div>
                 </h2>
 
                 {/* Paragraph text expands across the space */}
-                <p className={`text-base md:text-left sm:text-lg md:text-xl ${theme[currentOutlook].textTwo} max-w-3xl`}>
+                <p className={`text-base sm:text-lg md:text-xl ${theme[currentOutlook].textTwo} max-w-3xl`}>
                   My <span className="text-cyan-400 font-medium">favourite tech</span> includes Javascript, Typescript, Vite, React, SvelteKit, TailWind, Node, Zustand, Tanstack, Express, Heroku, Netlify & Render
                 </p>
                 
@@ -193,7 +351,7 @@ const App = () => {
                   href="https://www.linkedin.com/in/david-battye-9932665a/" 
                   target="_blank"
                   rel="noreferrer"
-                  className="ml-10 md:mx-auto md:ml-0 text-base sm:text-lg md:text-xl relative overflow-hidden px-8 py-3.5 group rounded-full bg-white text-slate-950 font-semibold shadow-xl hover:scale-105 transition-transform duration-200 cursor-pointer"
+                  className="mx-auto md:mr-auto md:ml-0 text-base sm:text-lg md:text-xl relative overflow-hidden px-8 py-3.5 group rounded-full bg-white text-slate-950 font-semibold shadow-xl hover:scale-105 transition-transform duration-200 cursor-pointer"
                 >
                   <div className="absolute top-0 right-full w-full h-full bg-cyan-400 opacity-20 group-hover:translate-x-full duration-200" />
                   <h4 className="relative z-10 flex items-center gap-2">Get in touch &rarr;</h4>
@@ -201,17 +359,21 @@ const App = () => {
               </div>
             </section>
 
-            <section id="logoLoop" className="transform-gpu will-change-transform">
+            <section id="logoLoop">
               <div className="w-full h-16 md:h-55 relative flex items-center justify-center">
-                <Suspense fallback={ <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" /> }>
+                <Suspense 
+                  fallback={
+                    <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
+                  }
+                >
                   {/* Basic horizontal loop */}
                   <LogoLoop
                     logos={techLogos}
-                    speed={55}
+                    speed={75}
                     direction="left"
                     logoHeight={80}
                     gap={60}
-                    hoverSpeed={55}
+                    hoverSpeed={0}
                     // scaleOnHover
                     // ariaLabel="Technology partners"
                   />
@@ -220,7 +382,7 @@ const App = () => {
               </div>
             </section>
 
-            <section id="projects" className="py-20 lg:py-32 md:px-2.5 flex flex-col gap-24">
+            <section id="projects" className="py-20 lg:py-32 flex flex-col gap-24">
               <div className={`flex flex-col gap-2 text-center ${theme[currentOutlook].text}`}>
                 <h6 className="text-lg sm:text-xl md:text-2xl">
                   A few of my creative endeavours
@@ -262,7 +424,7 @@ const App = () => {
               
             </section>
 
-            <section id="about" className="py-20 pt-10 lg:pt-16 lg:py-32 md:px-2.5 flex flex-col gap-16 sm:gap-20 md:gap-24 relative">
+            <section id="about" className="py-20 pt-10 lg:pt-16 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative">
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <Suspense 
                   fallback={
@@ -369,7 +531,7 @@ const App = () => {
               </div>          
             </section>
 
-            <section id="break" className='pt-10 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative'>
+            <section className='pt-10 lg:py-32 flex flex-col gap-16 sm:gap-20 md:gap-24 relative'>
               <div className={`${theme[currentOutlook].lineColor} ${theme[currentOutlook].textTwo}`}>
                 <h6 className="text-lg sm:text-xl md:text-2xl">Not given up yet?</h6>
                 <h3 className="font-semibold text-3xl sm:text-4xl md:text-5xl py-2">
@@ -386,12 +548,9 @@ const App = () => {
                   <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
                 }
               >
-                <div className='absolute mx-auto justify-center items-center text-3xl
-                 md:text-7xl text-[#6366F1] font-bold drop-shadow-[0_0_20px_rgba(99,102,241,0.8)]
-                  animation-duration-[3s] transform-gpu backface-visibility-hidden'
-                >
+                <div className='absolute mx-auto justify-center items-center text-3xl md:text-7xl text-[#6366F1] font-bold drop-shadow-[0_0_20px_rgba(99,102,241,0.8)] animation-duration-[3s]'>
                   <ShinyText 
-                    text="So why not invest?"
+                    text="📡🛰️ So why not invest?"
                     speed={2}
                     delay={0}
                     color={theme[currentOutlook].shinyText}
@@ -406,7 +565,7 @@ const App = () => {
               </Suspense>
             </section>
 
-            <section id="logoLoop2" className="transform-gpu will-change-transform">
+            <section id="logoLoop2">
               <div className="w-full h-20 md:h-55 relative mt-36 mb-8 flex items-center justify-center">
                 <Suspense 
                   fallback={
@@ -416,11 +575,11 @@ const App = () => {
                   {/* Basic horizontal loop */}
                   <LogoLoop
                     logos={techLogos}
-                    speed={55}
+                    speed={75}
                     direction="left"
                     logoHeight={100}
                     gap={60}
-                    hoverSpeed={55}
+                    hoverSpeed={0}
                     // scaleOnHover
                     // ariaLabel="Technology partners"
                   />
@@ -492,3 +651,4 @@ const App = () => {
 }
 
 export default App;
+

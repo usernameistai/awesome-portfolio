@@ -39,7 +39,7 @@ const App = () => {
                 DB_PORTFOLIO //
               </div>
               <div className="flex gap-2 md:gap-4">
-                <select 
+                <select id="sectionFinder"
                   value={activeSelection}
                   onChange={((e) => {
                     const targetId = e.target.value;
@@ -67,7 +67,7 @@ const App = () => {
                 ))}
                 <div className="flex items-center gap-1">
                   {/* MOBILE DROPDOWN: Visible only on small screens */}
-                  <select
+                  <select id="themeSelector"
                     value={currentOutlook}
                     onChange={(e) => setCurrentOutlook(e.target.value as Outlook)}
                     className="block md:hidden bg-slate-900/80 border border-slate-700 font-mono text-xs text-cyan-400 px-2 py-1.5 rounded-lg focus:outline-none focus:border-cyan-500 cursor-pointer"
@@ -77,7 +77,6 @@ const App = () => {
                     <option value="WINTERSUN" className="bg-slate-950 text-cyan-400">WINTERSUN</option>
                     <option value="OTHER" className="bg-slate-950 text-cyan-400">OTHER</option>
                   </select>
-
                   {/* DESKTOP BUTTONS: Hidden on mobile, visible on md+ screens */}
                   <div className="hidden md:flex bg-slate-900/10 dark:bg-slate-800/40 p-1 rounded-lg border border-slate-200 dark:border-slate-800 gap-1">
                     {(['TECH25', 'WINTERSUN', 'OTHER'] as Outlook[]).map((mode) => (
@@ -99,7 +98,7 @@ const App = () => {
             </div>
           </nav>
 
-          <main className="flex flex-col flex-1 pb-4 mx-auto max-w-7xl">
+          <main className="flex flex-col flex-1 pb-4 mx-auto max-w-7xl space-y-10">
 
             <section id="hero" className="relative w-full h-[60vh] min-h-[65vh] flex flex-col items-center justify-center text-center md:px-2.5 overflow-visible">
               <div className={`absolute inset-0 pointer-events-none overflow-visible opacity-75
@@ -185,7 +184,7 @@ const App = () => {
 
                 {/* Paragraph text expands across the space */}
                 <p className={`text-base md:text-left sm:text-lg md:text-xl ${theme[currentOutlook].textTwo} max-w-3xl`}>
-                  My <span className="text-cyan-400 font-medium">favourite tech</span> includes Javascript, Typescript, Vite, React, SvelteKit, TailWind, Node, Zustand, Tanstack, Express, Heroku, Netlify & Render
+                  My <span className="text-cyan-400 font-medium">favourite tech</span> includes Javascript, Typescript, Vite, React, SvelteKit, TailWind, Node, Zustand, Tanstack, Express, Heroku, Netlify & Render. See the Logo loop below 
                 </p>
                 
                 {/* Button handles left alignment nicely */}
@@ -193,7 +192,7 @@ const App = () => {
                   href="https://www.linkedin.com/in/david-battye-9932665a/" 
                   target="_blank"
                   rel="noreferrer"
-                  className="ml-10 md:mx-auto md:ml-0 text-base sm:text-lg md:text-xl relative overflow-hidden px-8 py-3.5 group rounded-full bg-white text-slate-950 font-semibold shadow-xl hover:scale-105 transition-transform duration-200 cursor-pointer"
+                  className="mx-12.5 md:mx-auto text-base sm:text-lg md:text-xl relative overflow-hidden px-8 py-3.5 group rounded-full bg-white text-slate-950 font-semibold shadow-xl hover:shadow-none hover:scale-105 transition-transform duration-200 cursor-pointer"
                 >
                   <div className="absolute top-0 right-full w-full h-full bg-cyan-400 opacity-20 group-hover:translate-x-full duration-200" />
                   <h4 className="relative z-10 flex items-center gap-2">Get in touch &rarr;</h4>
@@ -230,7 +229,8 @@ const App = () => {
                 </h3>
               </div>
               <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" 
-                className={`mx-auto px-4 py-2 rounded-md border border-solid border-white 
+                className={`mx-auto px-4 py-2 rounded-md border border-solid
+                  ${currentOutlook === 'WINTERSUN' ? 'border-slate-900/60' : 'border-white'}  
                 flex items-center gap-2 -mb-4 sm:mb-0 -mt-10 hover:border-cyan-700
                  hover:text-cyan-400 duration-200 ${theme[currentOutlook].text}`}>
                   <i className="fa-regular fa-circle-play"></i>
@@ -432,7 +432,7 @@ const App = () => {
           <footer className="relative border-t border-slate-900 bg-slate-950/60 backdrop-blur-md w-full">
             <div className="absolute top-0 left-0 w-full h-0.5 bg-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
             
-            <div className="mx-8 px-6 py-12 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">     
+            <div className="md:mx-8 px-6 py-12 flex flex-col md:flex-row justify-between items-center md:items-start gap-8">     
               <div id="footerBlurb" className="flex flex-col gap-2 text-center md:text-left font-mono">
                 <div className="text-sm tracking-widest text-cyan-400 animate-pulse uppercase">
                   David Battye &bull; Full Stack Developer //

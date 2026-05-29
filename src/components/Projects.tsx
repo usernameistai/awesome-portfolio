@@ -10,7 +10,7 @@ export interface ProjectData {
 
 export interface ProjectCardProps {
   project: ProjectData;
-  currentOutlook: 'TECH25' | 'WINTERSUN' | 'OTHER'
+  currentOutlook: 'TECH25' | 'WINTERSUN' | 'OTHER';
 }
 
 const Projects = ({ project, currentOutlook }: ProjectCardProps) => {
@@ -42,12 +42,19 @@ const Projects = ({ project, currentOutlook }: ProjectCardProps) => {
         <i className={project.icon} />
       </div>
 
-      <h3 className={`font-medium text-xl sm:text-2xl md:text-3xl ${theme[currentOutlook].text}`}>
+      <h3 className={`font-medium text-xl sm:text-2xl md:text-3xl ${theme[currentOutlook].text} hover:text-[#6366F1] transition-all duration-200`}>
         {project.name}
       </h3>
 
       {/* Children acts exactly like the <slot /> */}
-      <div className="text-lg text-neutral-400 leading-relaxed font-sans">
+      <div className={`text-lg leading-relaxed font-sans 
+        ${currentOutlook === 'WINTERSUN' 
+          ? 'text-neutral-500' 
+          : currentOutlook === 'OTHER' 
+            ? 'text-neutral-200' 
+            : 'text-neutral-300'
+        }
+      `}>
         {project.desc}
       </div>
 

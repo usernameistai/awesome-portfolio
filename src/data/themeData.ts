@@ -48,7 +48,7 @@ export const theme = {
       text: "text-white",
       textTwo: "text-slate-300",
       selection: "selection:bg-cyan-500 selection:text-white",
-      navBg: "bg-zinc-950/80 border-b border-zinc-900",
+      navBg: "bg-zinc-800/50 border-b border-zinc-700",
       navTextActive: "text-white border-zinc-700",
       navTextInactive: "text-neutral-400 border-transparent hover:text-neutral-200 hover:bg-neutral-900/500",
       cardBg: "bg-zinc-900/50 border-zinc-800",

@@ -102,7 +102,7 @@ const App = () => {
 
             <section id="hero" className="relative w-full h-[60vh] min-h-[65vh] flex flex-col items-center justify-center text-center md:px-2.5 overflow-visible">
               <div className={`absolute inset-0 pointer-events-none overflow-visible opacity-75
-                ${currentOutlook === 'WINTERSUN' ? 'mix-blend-multiply' : 'mix-blend-screen'}`}> {/* Removed overflow-hidden from class */}
+                ${currentOutlook === 'WINTERSUN' ? 'mix-blend-multiply' : 'mix-blend-screen'}`}>
                 <MagicRings
                   color={theme[currentOutlook].ringColor1}
                   colorTwo={theme[currentOutlook].ringColor2}
@@ -127,7 +127,7 @@ const App = () => {
                   clickBurst={false}
                 />
               </div>
-              {/* The Image - Absolute, centered on top */}
+
               <div className="absolute inset-0 flex items-center justify-center">
                 <img src={ProfilePic} className="w-54 md:w-84 h-54 md:h-84 rounded-[50%]" alt="David Battye Profile"/>
               </div>

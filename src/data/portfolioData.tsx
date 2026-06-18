@@ -1,9 +1,10 @@
 import { type ProjectData } from '../components/Projects';
-import { SiReact, SiVite, SiTypescript, SiTailwindcss, SiNodedotjs, 
+import { SiReact, SiTypescript, SiTailwindcss, SiNodedotjs, 
   SiExpress, SiMongodb, SiSvelte, SiPostman, SiHeroku, SiHtml5, SiTauri,
   SiNetlify, SiRender } from 'react-icons/si';
 import { VscVscodeInsiders } from "react-icons/vsc";
 import { FaCss3, FaRust  } from "react-icons/fa6";
+import viteLogo from '../assets/vite.svg';
 
 export const myProjects: ProjectData[] = [
     { 
@@ -87,6 +88,16 @@ export const myProjects: ProjectData[] = [
         )
     },
     { 
+      name: 'Aegis Crypto Dashboard', 
+      icon: 'fa-brands fa-ethereum text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://aegiscrypto.netlify.app/', 
+      desc:  (
+        <>
+          <p>Attractive glassmorphic Crypto Dashboard showing market trends of Crypto coin in question. Greast backgrounds. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]"> Vite, React, Typescript, Tailwind, Shadcn, Framer-Motion, Motion, Recharts</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  There is a tooltip to give you more information going over the area, namely the variance to the global average plus more!</p>
+        </>
+        )
+    },
+    { 
       name: 'StockMarket-WishList', 
       icon: 'fa-solid fa-money-bill-trend-up text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
       href: 'https://stockmarket-wishlist.onrender.com/', 
@@ -150,7 +161,7 @@ export const myProjects: ProjectData[] = [
 ];
 
 export const techLogos = [
-  { node: <SiVite className="text-[#863BFF]" />, title: "Vite", href: "https://vitejs.dev" },
+  { node: <img src={viteLogo} className='w-32 h-32'/>, title: "Vite", href: "https://vitejs.dev" },
   { node: <SiReact className="text-[#61DBFB]" />, title: "React", href: "https://react.dev" },
   { node: <SiTypescript className="text-[#3178C6]" />, title: "TypeScript", href: "https://www.typescriptlang.org" },
   { node: <SiTailwindcss className="text-[#06B6D4]" />, title: "Tailwind CSS", href: "https://tailwindcss.com" },

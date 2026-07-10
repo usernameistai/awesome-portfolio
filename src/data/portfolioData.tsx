@@ -18,6 +18,16 @@ export const myProjects: ProjectData[] = [
       )
     },
     { 
+      name: 'Aegis Crypto Dashboard', 
+      icon: 'fa-brands fa-ethereum text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://aegiscrypto.netlify.app/', 
+      desc:  (
+        <>
+          <p>Attractive glassmorphic Crypto Dashboard showing market trends of Crypto coins. Search for the coin you want or see the top 11 results in terms of market rank, at the bottom or using the modal. Day and night as well as seasonal backgrounds. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]"> Vite, React, Typescript, Tailwind, Shadcn, Framer-Motion, Motion, Recharts</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  There is a tooltip to give you more information going over the area, namely the variance to the global average plus more!</p>
+        </>
+      )
+    },
+    { 
       name: 'PeakyBlogger', 
       icon: 'fa-solid fa-tree text-[#6366F1]', 
       href: 'https://peakyblogger-d362176b187f.herokuapp.com/', 
@@ -26,6 +36,26 @@ export const myProjects: ProjectData[] = [
           <p>PeakyBlogger is a Full Stack blogsite for my Father, created a <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">MongoDb Atlas, EJS, Passport, Vanilla JS, Express.js & Node.js</strong>  CRUD application. Hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Heroku.</strong> This is so he can document his walks and eateries of the Peak District to promote healthy living and eating as well as wellbeing.</p>
         </>
       )
+    },
+    { 
+      name: 'D3.js Choropleth Map USA Edu.', 
+      icon: 'fa-solid fa-earth-americas text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://fcc-choropleth-map.onrender.com/', 
+      desc: (
+        <>
+          <p>Choropleth Map illustrating the % of adults with a bachelors degree over the age of 25 between 2010 - 2014. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js, HTML5 & CSS3</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong>  There is a tooltip for further information about the specific areas / regions. </p>
+        </>
+      )
+    },
+    { 
+      name: 'D3.js Heat Map', 
+      icon: 'fa-solid fa-fire-flame-curved text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://fcc-heat-map.onrender.com/', 
+      desc:  (
+        <>
+          <p>Heat Map illustrating the Monthly Global Land-Surface Temperature between 1753 - 2015. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js & HTML5/CSS3/JS</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong>  There is a tooltip to give you more information going over the area, namely the variance to the global average plus more!</p>
+        </>
+        )
     },
     { 
       name: 'Weather Or Not', 
@@ -56,56 +86,6 @@ export const myProjects: ProjectData[] = [
           <p>e-Commerce-API-Basic is a Static web app demonstrating an e-commerce site for my portfolio. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong>  This is more an app to search for items, using a dummyjson API product data and also dummy data for the users / top sellers. With night / day settings.</p>
         </>
       )
-    },
-    { 
-      name: 'Todo-my-Todo', 
-      icon: 'fa-solid fa-list-ul text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://todo-my-todo.netlify.app/', 
-      desc:  (
-        <>
-          <p>Todo-my-Todo is a nicely designed and very simple todo list, using localstorage. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  This is a basic todo app with only the funcitonality to edit or delete, looks retro however.</p>
-        </>
-      )
-    },
-    { 
-      name: 'D3.js Choropleth Map USA Edu.', 
-      icon: 'fa-solid fa-earth-americas text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://fcc-choropleth-map.onrender.com/', 
-      desc: (
-        <>
-          <p>Choropleth Map illustrating the % of adults with a bachelors degree over the age of 25 between 2010 - 2014. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js, HTML5 & CSS3</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong>  There is a tooltip for further information about the specific areas / regions. </p>
-        </>
-      )
-    },
-    { 
-      name: 'D3.js Heat Map', 
-      icon: 'fa-solid fa-fire-flame-curved text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://fcc-heat-map.onrender.com/', 
-      desc:  (
-        <>
-          <p>Heat Map illustrating the Monthly Global Land-Surface Temperature between 1753 - 2015. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">D3.js & HTML5/CSS3/JS</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong>  There is a tooltip to give you more information going over the area, namely the variance to the global average plus more!</p>
-        </>
-        )
-    },
-    { 
-      name: 'Aegis Crypto Dashboard', 
-      icon: 'fa-brands fa-ethereum text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://aegiscrypto.netlify.app/', 
-      desc:  (
-        <>
-          <p>Attractive glassmorphic Crypto Dashboard showing market trends of Crypto coin in question. Greast backgrounds. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]"> Vite, React, Typescript, Tailwind, Shadcn, Framer-Motion, Motion, Recharts</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  There is a tooltip to give you more information going over the area, namely the variance to the global average plus more!</p>
-        </>
-        )
-    },
-    { 
-      name: 'StockMarket-WishList', 
-      icon: 'fa-solid fa-money-bill-trend-up text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://stockmarket-wishlist.onrender.com/', 
-      desc: (
-        <>
-          <p>StockMarket-WishList is a Static web app to help you keep track of your favourite stock using NASDAQ100. Created using <strong className="text-[#6366F1]">Vite.js & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1]">Render.</strong>  The symbol used will bring up the stock of choice into the graph area of the app where you can select the relevant data you are after.</p>
-        </>
-        )
     },
     { 
       name: 'JDB Blood Pressure Tracker', 
@@ -146,6 +126,16 @@ export const myProjects: ProjectData[] = [
           <p>The older portfolio. Compare both portfolios. Created using <strong className="text-[#6366F1]">Vite.js, Svelte.js & TailwindCSS</strong> This is hosted on <strong className="text-[#6366F1]">Netlify.</strong>  This was a great layout so didn't want to change it very much.</p>
         </>
         )
+    },
+    { 
+      name: 'Todo-my-Todo', 
+      icon: 'fa-solid fa-list-ul text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://todo-my-todo.netlify.app/', 
+      desc:  (
+        <>
+          <p>Todo-my-Todo is a nicely designed and very simple todo list, using localstorage. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  This is a basic todo app with only the funcitonality to edit or delete, looks retro however.</p>
+        </>
+      )
     },
     { 
       name: 'Butt Scratcher', 

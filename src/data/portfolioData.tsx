@@ -147,6 +147,16 @@ export const myProjects: ProjectData[] = [
         </>
         )
     },
+    { 
+      name: 'My CV', 
+      icon: 'fa-solid fa-archway text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://vite-cv.netlify.app/', 
+      desc: (
+        <>
+          <p>My CV utilising modern HTML5 and CSS3 where necessary. Created using <strong className="text-[#6366F1]">HTML5, CSS3, React, Vite and Tailwind</strong> Just a nice web app version of my CV with links and details etc.</p>
+        </>
+        )
+    },
 
 ];
 
@@ -174,4 +184,4 @@ export const benefits = [
   {name: 'a self taught developer', desc: 'I studied an MSc in I.T. course but mostly I taught myself to code using free online resources and became entwined with the creativity and problem solving that is involved in developing and engineering innovative new online experiences. Starting off with JavaScript, HTML & CSS and evolving my knowledge base to include JavaScript frameworks, backend programming, design, cloud services and much much more.'},
   {name: 'a product design and UX fanatic', desc: 'Carefully crafting and designing amazing user experiences allows me to express and experiment with every morsel of creativity I have. I love the challenge of learning new design concepts and enabling users with amazing online experiences. Did you click the link?'},
   {name: 'an excellent communicator', desc: 'Communication is key and it is a paramount value of mine. I believe in transparency and constructive communication above all else, it helps with physically and mentally unwell people. This helps me develop deep relationships and ensures my effectiveness and productivity in any work space with any team. This could be seen from my previous work in hospitals during the lock-down period, people in varying states of happiness & wellness and then there were the patients...'},
-]
+];

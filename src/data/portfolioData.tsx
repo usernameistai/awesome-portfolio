@@ -28,6 +28,26 @@ export const myProjects: ProjectData[] = [
       )
     },
     { 
+      name: 'Weather Or Not', 
+      icon: 'fa-solid fa-cloud-sun-rain text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://weather-orr-not.netlify.app/', 
+      desc: (
+        <>
+          <p>Weather Or Not is a Static web app to help you keep track of your local weather using OpenWeatherMap API. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React, Typescript & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  You can keep track of weather from several areas, cities or regions.</p>
+        </>
+      )
+    },
+    { 
+      name: 'JDB Blood Pressure Tracker', 
+      icon: 'fa-solid fa-file-medical text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://david-bp-health.netlify.app/', 
+      desc: (
+        <>
+          <p>A Blood Pressure monitoring app for a family member, can update the daily readings and see a week trend or monthly trend. Can export a CSV file for presentation to clinicians. Created using <strong className="text-[#6366F1]">Vite.js & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1]">Netlify.</strong>  Simply enter your blood pressure at specified periods or more specifically.</p>
+        </>
+        )
+    },
+    { 
       name: 'PeakyBlogger', 
       icon: 'fa-solid fa-tree text-[#6366F1]', 
       href: 'https://peakyblogger-d362176b187f.herokuapp.com/', 
@@ -36,6 +56,26 @@ export const myProjects: ProjectData[] = [
           <p>PeakyBlogger is a Full Stack blogsite for my Father, created a <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">MongoDb Atlas, EJS, Passport, Vanilla JS, Express.js & Node.js</strong>  CRUD application. Hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Heroku.</strong> This is so he can document his walks and eateries of the Peak District to promote healthy living and eating as well as wellbeing.</p>
         </>
       )
+    },
+    { 
+      name: 'Aegis Aether Cyber HUD', 
+      icon: 'fa-brands fa-rust text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://github.com/usernameistai/Aegis-Aether-Cyber-HUD/releases/tag/v2.1.0', 
+      desc: (
+        <>
+          <p>A desktop application to monitor network traffic, namely TCP & UDP. Identifying new connections, owing to my laptop being massively hacked even with MFA. Created using <strong className="text-[#6366F1]">Vite.js, Tauri, Rust & TailwindCSS.</strong> There is ability to download the release from <strong className="text-[#6366F1]">Github.</strong>  Perfect for modern computers, also indicates PC temperature and other metrics available in task manager.</p>
+        </>
+        )
+    },
+    { 
+      name: 'Aegis Helper', 
+      icon: 'fa-brands fa-rust text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
+      href: 'https://github.com/usernameistai/Aegis-Helper/releases/tag/v0.1.0', 
+      desc: (
+        <>
+          <p>A desktop application to change and monitor bluetooth and WLAN servcies, as well as be able to see recently enabled firewall rules. Created using <strong className="text-[#6366F1]">Vite.js, Tauri, Rust & TailwindCSS.</strong> There is ability to download the release from <strong className="text-[#6366F1]">Github.</strong>  Basic functionality for speed and necessity.</p>
+        </>
+        )
     },
     { 
       name: 'D3.js Choropleth Map USA Edu.', 
@@ -58,16 +98,6 @@ export const myProjects: ProjectData[] = [
         )
     },
     { 
-      name: 'Weather Or Not', 
-      icon: 'fa-solid fa-cloud-sun-rain text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://weather-orr-not.netlify.app/', 
-      desc: (
-        <>
-          <p>Weather Or Not is a Static web app to help you keep track of your local weather using OpenWeatherMap API. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React, Typescript & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  You can keep track of weather from several areas, cities or regions.</p>
-        </>
-      )
-    },
-    { 
       name: 'Data Dashboard', 
       icon: 'fa-solid fa-server text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
       href: 'https://dashboard-1-ftx2.onrender.com/', 
@@ -86,26 +116,6 @@ export const myProjects: ProjectData[] = [
           <p>e-Commerce-API-Basic is a Static web app demonstrating an e-commerce site for my portfolio. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render.</strong>  This is more an app to search for items, using a dummyjson API product data and also dummy data for the users / top sellers. With night / day settings.</p>
         </>
       )
-    },
-    { 
-      name: 'JDB Blood Pressure Tracker', 
-      icon: 'fa-solid fa-file-medical text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://david-bp-health.netlify.app/', 
-      desc: (
-        <>
-          <p>A Blood Pressure monitoring app for a family member, can update the daily readings and see a week trend or monthly trend. Can export a CSV file for presentation to clinicians. Created using <strong className="text-[#6366F1]">Vite.js & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1]">Netlify.</strong>  Simply enter your blood pressure at specified periods or more specifically.</p>
-        </>
-        )
-    },
-    { 
-      name: 'Aegis Aether Cyber HUD', 
-      icon: 'fa-brands fa-rust text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://github.com/usernameistai/Aegis-Aether-Cyber-HUD/releases/tag/v2.1.0', 
-      desc: (
-        <>
-          <p>A desktop application to monitor network traffic, namely TCP & UDP. Identifying new connections, owing to my laptop being massively hacked even with MFA. Created using <strong className="text-[#6366F1]">Vite.js, Tauri, Rust & TailwindCSS.</strong> There is ability to download the release from <strong className="text-[#6366F1]">Github.</strong>  Perfect for modern computers, also indicates PC temperature and other metrics available in task manager.</p>
-        </>
-        )
     },
     { 
       name: 'My Awesome Portfolio', 

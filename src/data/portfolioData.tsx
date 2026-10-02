@@ -28,12 +28,12 @@ export const myProjects: ProjectData[] = [
       )
     },
     { 
-      name: 'Weather Or Not', 
+      name: 'The Weather Window', 
       icon: 'fa-solid fa-cloud-sun-rain text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]', 
-      href: 'https://weather-orr-not.netlify.app/', 
+      href: 'https://theweatherwindow.netlify.app/', 
       desc: (
         <>
-          <p>Weather Or Not is a Static web app to help you keep track of your local weather using OpenWeatherMap API. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Vite.js, React, Typescript & TailwindCSS.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Netlify.</strong>  You can keep track of weather from several areas, cities or regions.</p>
+          <p>Weather Window helps you keep look at and track of your local weather using OpenWeatherMap API. Created using <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">.NET(10), C#, Vite.js, React, Typescript, TailwindCSS, Tanstack Query and Zustand.</strong> This is hosted on <strong className="text-[#6366F1] font-bold drop-shadow-[0_0_15px_rgba(99,102,241,0.7)]">Render (C#/.NET backend) and Netlify (frontend).</strong>  You can keep track of weather from several areas, cities or regions.</p>
         </>
       )
     },

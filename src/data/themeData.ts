@@ -62,7 +62,7 @@ export const theme = {
       lineColor: "flex flex-col gap-2 text-center relative before:absolute before:top-0 before:left-0 before:w-2/3 before:h-1.5 before:bg-violet-700 after:absolute after:bottom-0 after:right-0 after:w-2/3 after:h-1.5 after:bg-violet-700 py-4 mb-10",
       shinyText: "#71717a",
     },
-  };
+};
 
 export const navLinks= [
   { label: 'System_Init', target: '#hero'},

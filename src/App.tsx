@@ -252,7 +252,7 @@ const App = () => {
                         color={theme[currentOutlook].electricBorder}
                         chaos={0.12}
                       >
-                          <Projects project={project} currentOutlook={currentOutlook}/>
+                        <Projects project={project} currentOutlook={currentOutlook}/>
                       </ElectricBorder>
                     </Suspense>
                   </>
@@ -380,7 +380,7 @@ const App = () => {
               <p className="mx-auto poppins font-semibold text-lg sm:text-xl md:text-2xl">A question for you might be...</p>
             </section>
 
-            <section id="lastBit" className='relative flex items-center justify-center mt-60'>
+            <section id="lastBit" className='relative flex items-center justify-center mt-42 mb-37'>
               <Suspense 
                 fallback={
                   <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
@@ -406,14 +406,13 @@ const App = () => {
               </Suspense>
             </section>
 
-            <section id="logoLoop2" className="transform-gpu will-change-transform">
+            {/* <section id="logoLoop2" className="transform-gpu will-change-transform">
               <div className="w-full h-20 md:h-55 relative mt-36 mb-8 flex items-center justify-center">
                 <Suspense 
                   fallback={
                     <div className="w-full h-full bg-slate-900/10 animate-pulse rounded-xl border border-slate-900/40" />
                   }
                 >
-                  {/* Basic horizontal loop */}
                   <LogoLoop
                     logos={techLogos}
                     speed={55}
@@ -421,12 +420,10 @@ const App = () => {
                     logoHeight={100}
                     gap={60}
                     hoverSpeed={55}
-                    // scaleOnHover
-                    // ariaLabel="Technology partners"
                   />
                 </Suspense>
               </div>
-            </section>
+            </section> */}
           </main>
 
           <footer className="relative border-t border-slate-900 bg-slate-950/60 backdrop-blur-md w-full">

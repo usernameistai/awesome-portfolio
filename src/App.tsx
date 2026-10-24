@@ -391,7 +391,7 @@ const App = () => {
                   animation-duration-[3s] transform-gpu backface-visibility-hidden'
                 >
                   <ShinyText 
-                    text="So why not invest?"
+                    text="Thanks for the interest"
                     speed={2}
                     delay={0}
                     color={theme[currentOutlook].shinyText}

@@ -129,7 +129,7 @@ const App = () => {
               </div>
 
               <div className="absolute inset-0 flex items-center justify-center">
-                <img src={ProfilePic} className="w-54 md:w-84 h-54 md:h-84 rounded-[50%]" alt="David Battye Profile"/>
+                <img src={ProfilePic} className="w-54 md:w-84 h-54 md:h-84 rounded-[50%]" alt="David Battye"/>
               </div>
             </section>
 
